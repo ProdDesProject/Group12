@@ -7,10 +7,23 @@
   <body>
     <div class="main">
       <h1>Old School Runescape Tracker</h1>
-      <form class="search_username" action="action_page.php">
-        <input type="text" placeholder="Search by username.." name="search">
-        <button type="submit">Search<i class="fa fa-search"></i></button>
-      </form>
+      <div class="search_username" >
+        <input id="search_bar" type="text" placeholder="Search by username.."></input>
+        <button id="search_button" onclick="searchUsername()">Search</button>
+      </div>
+      <div class="skills_table">
+        <h2 id=table_heading></h2>
+        <table id=skilltable>
+          <tr>
+            <th>Skill</th>
+            <th>Level</th>
+            <th>Experience</th>
+          </tr>
+        </table>
+      </div>
     </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/skills.js"></script>
   </body>
 </html>

@@ -2,7 +2,7 @@ const express = require('express')
 const path = require('path');
 const skills = require('./services/skills');
 const app = express();
-const port = 3000;
+const port = 7373;
 
 const options = {
   index: 'index.html'
@@ -16,9 +16,18 @@ app.get('/skills', (req, res) => {
   const t = skills.getAllSkills();
         res.json(t);
 })
-
-app.get('/skills/:id', (req, res) => {
+app.get('/skills/id=:id', (req, res) => {
   const t = skills.getSkillsById(req.params.id)
+      if(t !== undefined){
+        res.json(t)
+      }
+      else{
+        res.sendStatus(404)
+      }
+})
+
+app.get('/skills/username=:username', (req, res) => {
+  const t = skills.getSkillsByName(req.params.username)
       if(t !== undefined){
         res.json(t)
       }

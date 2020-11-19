@@ -22,14 +22,13 @@
 
 h1 {
     font-family: 'runescape_bold';
-    color: white;
+    color: black;
 }
 body {
     height: 100%;
     background-image: url('/images/bg_2.jpg');
     background-color: black;
     background-position: center;
-    background-repeat: repeat;
 }
 
 .main {
@@ -49,7 +48,7 @@ body {
 .search_username {
     display: inline-block;
     vertical-align: middle;
-    margin: auto;
+    margin-top: 50px;
     width: 80%;
 }
 .search_username input[type=text] {
@@ -68,4 +67,41 @@ body {
     font-size: 25px;
     cursor: pointer;
     font-family: runescape_bold;
+}
+
+.skills_table {
+    display: inline-block;
+    margin-top: 20px;
+    width: 80%;
+    overflow:auto;
+    padding-bottom: 30px;
+}
+
+.skills_table table {
+    visibility: hidden;
+    margin: auto;
+    border: 1px solid black;
+    padding: 15px;
+    vertical-align: middle;
+    padding-bottom: 30px;
+}
+
+.skills_table th {
+    font-family: runescape_bold;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 20px;
+}
+
+.skills_table td {
+    font-family: runescape;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 20px;
+}
+
+.skills_table h2 {
+    visibility: hidden;
+    font-family: runescape_bold;
+    font-size: 25px;
 }

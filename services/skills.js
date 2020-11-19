@@ -30,7 +30,32 @@ let skills = [
             hunter : '2130300',
             construction : '2130300'
         },
-        validApiKey: null
+        level : {
+          overall : '1840',
+          attack : '80',
+          defence : '80',
+          strength : '80',
+          hitpoints : '80',
+          ranged : '80',
+          prayer : '80',
+          magic : '80',
+          cooking : '80',
+          woodcutting : '80',
+          fletching : '80',
+          fishing : '80',
+          firemaking : '80',
+          crafting : '80',
+          smithing : '80',
+          mining : '80',
+          herblore : '80',
+          agility : '80',
+          thieving : '80',
+          slayer : '80',
+          farming : '80',
+          runecraft : '80',
+          hunter : '80',
+          construction : '80'
+        }
     }
 ]
 
