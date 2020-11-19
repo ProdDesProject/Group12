@@ -1,0 +1,71 @@
+*{
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'runescape_bold';
+    src: url('../fonts/runescape_bold.woff2') format('woff2'),
+        url('../fonts/runescape_bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'runescape';
+    src: url('../fonts/runescape.woff2') format('woff2'),
+        url('../fonts/runescape.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+h1 {
+    font-family: 'runescape_bold';
+    color: white;
+}
+body {
+    height: 100%;
+    background-image: url('/images/bg_2.jpg');
+    background-color: black;
+    background-position: center;
+    background-repeat: repeat;
+}
+
+.main {
+    top: 0;
+    bottom: 0;
+    width: 1350px;
+    left: 50%;
+    right: 50%;
+    position: fixed;
+    margin-left: -675px;
+    background-image: url('/images/bg_3.png');
+    background-position: center;
+    background-repeat: repeat-y;
+    text-align: center;
+}
+
+.search_username {
+    display: inline-block;
+    vertical-align: middle;
+    margin: auto;
+    width: 80%;
+}
+.search_username input[type=text] {
+    height: 30px;
+    float: left;
+    border: 1px solid grey;
+    font-size: 25px;
+    font-family: runescape;
+    width: 90%
+}
+
+.search_username button {
+    height: 30px;
+    float: left;
+    width: 10%;
+    font-size: 25px;
+    cursor: pointer;
+    font-family: runescape_bold;
+}
