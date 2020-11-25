@@ -50,8 +50,20 @@ app.post('/skills', (req, res) => {
           error: 'Missing xp value from body'
       });
   }
+  if('level' in req.body == false ) {
+        return res.status(400).json({
+            status: 'error',
+            error: 'Missing level value from body'
+      });
+  }
 
-  skills.createSkills(req.body.username, req.body.xp)
+app.put('/skills', (req, res) => {
+  skills.editSkills (req.body.username, req.body.xp, req.body.level)
+  res.sendStatus(200);
+})
+
+
+  skills.createSkills(req.body.username, req.body.xp, req.body.level)
 
   res.sendStatus(201)
 })

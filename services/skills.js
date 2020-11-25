@@ -69,6 +69,14 @@ module.exports = {
   },
   getAllSkills: () => skills,
   getSkillsById: (id) => skills.find(u => u.id == id),
-  getSkillsByName: (username) => skills.find(u => u.username == username)
+  getSkillsByName: (username) => skills.find(u => u.username == username),
+  editSkills: (username, xp, level) => {
+    const result = users.find(t =>t.username == username)
 
+    if(result !== undefined)
+    {
+      result.xp = xp
+      result.level = level
+    }
+  }
 }
