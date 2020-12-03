@@ -11,9 +11,27 @@
         <input id="search_bar" type="text" placeholder="Search by username.."></input>
         <button id="search_button" onclick="searchUsername()">Search</button>
       </div>
+      <div class="user_page" id="userpage">
+        <h2 id="user_heading"></h2>
+        <div class="user_level">
+          <div class="level_div">
+            <div class="level_row1">
+              <picture class=level_picture>
+                <img src="images/lvl_1.png" alt="level">
+              </picture>
+              <h1 class="level_h1" id="lvl_show">99</h1>
+            </div>
+            <h2 class="level_h2" id="lvl_name">beer level 1</h1>
+          </div>
+          <div class="level_progress">
+            <progress value="32" max="100">32</progress>
+          </div>
+        </div>
+        
+      </div>
       <div class="skills_table">
         <h2 id=table_heading></h2>
-        <table id=skilltable>
+        <table id="skilltable">
           <tr>
             <th>Skill</th>
             <th>Level</th>

@@ -105,3 +105,59 @@ body {
     font-family: runescape_bold;
     font-size: 25px;
 }
+
+.user_page {
+    width: 100%;
+    height: 100%;
+}
+
+.user_level {
+    font-family: runescape;
+    display: inline-block;
+    width: 80%;
+}
+
+.user_level progress {
+    float: left;
+    height: 24px;
+    width: 60%;
+}
+
+.level_div {
+    background-image: url('/images/bg_lvl.png');
+    width: 228px;
+    height: 189px;
+}
+
+.level_row1 {
+    width: 100%;
+    height: 60%;
+    display: inline-block;
+}
+.level_picture {
+
+    float: left;
+    margin-left: 19px;
+    margin-top: 20px;
+}
+
+.level_h1 {
+    width: 95px;
+    float: right;
+    letter-spacing: -5px;
+    font-family: runescape_bold;
+    color: yellow;
+    font-size: 90px;
+    text-align: center;
+    margin-top: 20px;
+    margin-right: 19px;
+}
+
+.level_h2 {
+    height: 40%;
+    line-height: 75px;
+    color: white;
+    text-align: center;
+    margin-top: 0px;
+}
+

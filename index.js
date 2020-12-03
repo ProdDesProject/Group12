@@ -1,8 +1,11 @@
 const express = require('express')
+const bodyParser = require('body-parser');
 const path = require('path');
 const skills = require('./services/skills');
 const app = express();
 const port = 7373;
+
+app.use(bodyParser.json());
 
 const options = {
   index: 'index.html'
@@ -57,8 +60,8 @@ app.post('/gains', (req, res) => {
 }),
 
 app.post('/skills', (req, res) => {
-  
-  if(req.body.username == false ) {
+
+  if('username' in req.body == false ) {
     return res.status(400).json({
         status: 'error',
         error: 'Missing username value from body'
