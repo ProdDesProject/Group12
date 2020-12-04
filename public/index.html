@@ -12,7 +12,6 @@
         <button id="search_button" onclick="searchUsername()">Search</button>
       </div>
       <div class="user_page" id="userpage">
-        <h2 id="user_heading"></h2>
         <div class="user_level">
           <div class="level_div">
             <div class="level_row1">
@@ -23,8 +22,16 @@
             </div>
             <h2 class="level_h2" id="lvl_name">beer level 1</h1>
           </div>
-          <div class="level_progress">
-            <progress value="32" max="100">32</progress>
+          <div class="level_heading_progress">
+            <h2 class="user_heading "id="userheading">longusername</h2>
+            <div class="level_progress">
+              <h2 class="level_current" id="levelcurrent">1</h2>
+              <div class="level_progress_upper_lower">
+                <progress class="progress_bar" id="progressbar" value="32" max="100">32</progress>
+                <h2 class="exp_indicator" id="expindicator">12345 exp remaining until next level</h2>
+              </div>
+              <h2 class="level_next" id="levelnext">2</h2>
+            </div>
           </div>
         </div>
         

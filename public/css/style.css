@@ -112,18 +112,15 @@ body {
 }
 
 .user_level {
+    margin-top: 50px;
     font-family: runescape;
+    background-image: url('/images/bg_progress.png');
     display: inline-block;
     width: 80%;
 }
 
-.user_level progress {
-    float: left;
-    height: 24px;
-    width: 60%;
-}
-
 .level_div {
+    float: left;
     background-image: url('/images/bg_lvl.png');
     width: 228px;
     height: 189px;
@@ -160,4 +157,105 @@ body {
     text-align: center;
     margin-top: 0px;
 }
+
+.level_heading_progress {
+    position: relative;
+    float: left;
+    width: 842px;
+    margin-left: 10px;
+    height: 189px;
+}
+
+.user_heading {
+    position: absolute;
+    font-size: 80px;
+    height: 94px;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    bottom: 95px;
+    line-height: 94px;
+    text-align: center;
+    margin-top: 0px;
+}
+
+.level_progress {
+    position: absolute;
+    display: inline-block;
+    height: 94px;
+    width: 100%;
+    left: 0px;
+    bottom: 0px;
+}
+
+.level_current {
+    color: black;
+    width: 15%;
+    height: 100%;
+    margin-top: 0px;
+    float: left;
+    line-height: 94px;
+    font-size: 50px;
+}
+
+.level_progress_upper_lower {
+    position: relative;
+    width: 70%;
+    height: 100%;
+    margin-top: 0px;
+    float: left;
+}
+.progress_bar {
+    position: absolute;
+    margin-top: 15px;
+    height: 30%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+    background-color: black;
+}
+.progress_bar::-webkit-progress-bar {
+    border: 3px solid black;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+    background-color: black;
+}
+.progress_bar::-webkit-progress-value {
+    
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+    background-color: green;
+}
+.progress_bar::-moz-progress-bar {
+    border: 3px solid black;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+    background-color: black;
+}  
+
+.exp_indicator {
+    position: absolute;
+    color: black;
+    height: 40%;
+    width: 100%;
+    bottom: 0px;
+    left: 0px;
+    top: 37px;
+    line-height: 27px;
+    text-align: center;
+}
+
+.level_next {
+    color: black;
+    width: 15%;
+    height: 100%;
+    margin-top: 0px;
+    float: left;
+    line-height: 94px;
+    font-size: 50px;
+
+}
+
+
+
+
 
