@@ -19,9 +19,16 @@
     font-display: swap;
 }
 
-
 h1 {
     font-family: 'runescape_bold';
+    color: black;
+}
+h2 {
+    font-family: 'runescape';
+    color: black;
+}
+h3 {
+    font-family: 'runescape';
     color: black;
 }
 body {
@@ -69,46 +76,17 @@ body {
     font-family: runescape_bold;
 }
 
-.skills_table {
-    display: inline-block;
-    margin-top: 20px;
-    width: 80%;
-    overflow:auto;
-    padding-bottom: 30px;
-}
-
-.skills_table table {
-    visibility: hidden;
-    margin: auto;
-    border: 1px solid black;
-    padding: 15px;
-    vertical-align: middle;
-    padding-bottom: 30px;
-}
-
-.skills_table th {
-    font-family: runescape_bold;
-    padding-left: 5px;
-    padding-right: 5px;
-    font-size: 20px;
-}
-
-.skills_table td {
-    font-family: runescape;
-    padding-left: 5px;
-    padding-right: 5px;
-    font-size: 20px;
-}
-
-.skills_table h2 {
-    visibility: hidden;
-    font-family: runescape_bold;
-    font-size: 25px;
-}
-
 .user_page {
+    position: absolute;
     width: 100%;
     height: 100%;
+}
+
+.landing_page {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    background-color: rgba(90, 82, 69, 0.25);
 }
 
 .user_level {
@@ -255,7 +233,74 @@ body {
 
 }
 
+.skills_heading_table {
+    position: relative;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 50px;
+    background-image: url("/images/bg_table.png");
+    height: 425px;
+}
 
+.table_heading_overall {
+    position: absolute;
+    font-size: 50px;
+    line-height: 78px;
+    text-align: center;
+    width: 100%;
+    height: 100px;
+    margin-top: 0px;
+}
 
+.skills_table {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 115px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 0;
+    height: 300px;
+}
 
+.skills_table-cell {
+    box-sizing: border-box;
+    flex-grow: 1;
+    overflow: hidden;
+    list-style: none;
+    width: 16.6%;
+    height: 25%;
+    border: solid 1px rgba(90, 82, 69);
+}
 
+.skill_pic_name {
+    height: 55%;
+    width: 100%;
+    display: inline-block;
+}
+
+.skill_picture {
+    height: 100%;
+    width: 23%;
+    float: left;
+    display: flex;
+    justify-content: center;
+    border: solid 1px rgba(90, 82, 69, 0.5);
+}
+
+.skill_name {
+    float: left;
+    height: 100%;
+    width: 77%;
+    line-height: 40px;
+    margin-top: 0px;
+    border: solid 1px rgba(90, 82, 69, 0.5);
+}
+
+.skill_xp {
+    margin-top: -4px;
+    height: 45%;
+    line-height: 33px;
+    border: solid 1px rgba(90, 82, 69, 0.5);
+}

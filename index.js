@@ -30,6 +30,16 @@ app.get('/skills/username=:username', (req, res) => {
   }
 })
 
+app.get('/gains/username=:username', (req, res) => {
+  const u = skills.getGainedXpByName(req.params.username);
+  if(u !== undefined){
+    res.json(u);
+  }
+  else{
+    res.sendStatus(404);
+  }
+})
+
 app.post('/startgains', (req, res) => {
 
   if('username' in req.body == false ) {

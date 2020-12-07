@@ -11,13 +11,14 @@
         <input id="search_bar" type="text" placeholder="Search by username.."></input>
         <button id="search_button" onclick="searchUsername()">Search</button>
       </div>
-      <div class="user_page" id="userpage">
+      <div class="landing_page" id="landingpage" style="visibility: visible;">
+        <h1>Testing testing 123</h1>
+      </div>
+      <div class="user_page" id="userpage" style="visibility: hidden;">
         <div class="user_level">
           <div class="level_div">
             <div class="level_row1">
-              <picture class=level_picture>
-                <img src="images/lvl_1.png" alt="level">
-              </picture>
+              <img class=level_picture id="levelpicture" src="images/lvl_1.png" alt="level">
               <h1 class="level_h1" id="lvl_show">99</h1>
             </div>
             <h2 class="level_h2" id="lvl_name">beer level 1</h1>
@@ -34,17 +35,225 @@
             </div>
           </div>
         </div>
-        
-      </div>
-      <div class="skills_table">
-        <h2 id=table_heading></h2>
-        <table id="skilltable">
-          <tr>
-            <th>Skill</th>
-            <th>Level</th>
-            <th>Experience</th>
-          </tr>
-        </table>
+        <div class="skills_heading_table">
+          <div class="table_heading">
+            <h1 class="table_heading_overall" id="tableheadingoverall">Overall gained xp: 8,712,390</h1>
+          </div>
+          <div class="skills_table">
+
+            <div class="skills_table-cell" id="attack">
+              <div class="skill_pic_name">
+                <div class="skill_picture">
+                  <img src="/images/skills/attack.png" style="margin: auto;">
+                </div>
+                <h2 class="skill_name">Attack</h2>
+              </div>
+              <h3 class="skill_xp" id="attack_gained">+1,279,863 xp</h3>
+            </div>
+            <div class="skills_table-cell" id="ranged">
+              <div class="skill_pic_name">
+                <div class="skill_picture">
+                  <img src="/images/skills/ranged.png" style="margin: auto;">
+                </div>
+                <h2 class="skill_name">Ranged</h2>
+              </div>
+              <h3 class="skill_xp" id="ranged_gained">+1,279,863 xp</h3>
+            </div>
+            <div class="skills_table-cell" id="woodcutting">
+              <div class="skill_pic_name">
+                <div class="skill_picture">
+                  <img src="/images/skills/woodcutting.png" style="margin: auto;">
+                </div>
+                <h2 class="skill_name">Woodcutting</h2>
+              </div>
+              <h3 class="skill_xp" id="woodcutting_gained">+1,279,863 xp</h3>
+            </div>
+            <div class="skills_table-cell" id="crafting">
+              <div class="skill_pic_name">
+                <div class="skill_picture">
+                  <img src="/images/skills/crafting.png" style="margin: auto;">
+                </div>
+                <h2 class="skill_name">Crafting</h2>
+              </div>
+              <h3 class="skill_xp" id="crafting_gained">+1,279,863 xp</h3>
+            </div>
+            <div class="skills_table-cell" id="agility">
+              <div class="skill_pic_name">
+                <div class="skill_picture">
+                  <img src="/images/skills/agility.png" style="margin: auto;">
+                </div>
+                <h2 class="skill_name">Agility</h2>
+              </div>
+              <h3 class="skill_xp" id="agility_gained">+1,279,863 xp</h3>
+            </div>
+            <div class="skills_table-cell" id="runecraft">
+              <div class="skill_pic_name">
+                <div class="skill_picture">
+                  <img src="/images/skills/runecraft.png" style="margin: auto;">
+                </div>
+                <h2 class="skill_name">Runecraft</h2>
+              </div>
+              <h3 class="skill_xp" id="runecraft_gained">+1,279,863 xp</h3>
+            </div>
+          
+            <div class="skills_table-cell" id="defence">
+              <div class="skill_pic_name">
+                <div class="skill_picture">
+                  <img src="/images/skills/defence.png" style="margin: auto;">
+                </div>
+                <h2 class="skill_name">Defence</h2>
+              </div>
+              <h3 class="skill_xp" id="defence_gained">+1,279,863 xp</h3>
+            </div>
+            <div class="skills_table-cell" id="prayer">
+              <div class="skill_pic_name">
+                <div class="skill_picture">
+                  <img src="/images/skills/prayer.png" style="margin: auto;">
+                </div>
+                <h2 class="skill_name">Prayer</h2>
+              </div>
+              <h3 class="skill_xp" id="prayer_gained">+1,279,863 xp</h3>
+            </div>
+            <div class="skills_table-cell" id="fletching">
+              <div class="skill_pic_name">
+                <div class="skill_picture">
+                  <img src="/images/skills/fletching.png" style="margin: auto;">
+                </div>
+                <h2 class="skill_name">Fletching</h2>
+              </div>
+              <h3 class="skill_xp" id="fletching_gained">+1,279,863 xp</h3>
+            </div>
+            <div class="skills_table-cell" id="smithing">
+              <div class="skill_pic_name">
+                <div class="skill_picture">
+                  <img src="/images/skills/smithing.png" style="margin: auto;">
+                </div>
+                <h2 class="skill_name">Smithing</h2>
+              </div>
+              <h3 class="skill_xp" id="smithing_gained">+1,279,863 xp</h3>
+            </div>
+            <div class="skills_table-cell" id="thieving">
+              <div class="skill_pic_name">
+                <div class="skill_picture">
+                  <img src="/images/skills/thieving.png" style="margin: auto;">
+                </div>
+                <h2 class="skill_name">Thieving</h2>
+              </div>
+              <h3 class="skill_xp" id="thieving_gained">+1,279,863 xp</h3>
+            </div>
+            <div class="skills_table-cell" id="hunter">
+              <div class="skill_pic_name">
+                <div class="skill_picture">
+                  <img src="/images/skills/hunter.png" style="margin: auto;">
+                </div>
+                <h2 class="skill_name">Hunter</h2>
+              </div>
+              <h3 class="skill_xp" id="hunter_gained">+1,279,863 xp</h3>
+            </div>
+          
+            <div class="skills_table-cell" id="strength">
+              <div class="skill_pic_name">
+                <div class="skill_picture">
+                  <img src="/images/skills/strength.png" style="margin: auto;">
+                </div>
+                <h2 class="skill_name">Strength</h2>
+              </div>
+              <h3 class="skill_xp" id="strength_gained">+1,279,863 xp</h3>
+            </div>
+            <div class="skills_table-cell" id="magic">
+              <div class="skill_pic_name">
+                <div class="skill_picture">
+                  <img src="/images/skills/magic.png" style="margin: auto;">
+                </div>
+                <h2 class="skill_name">Magic</h2>
+              </div>
+              <h3 class="skill_xp" id="magic_gained">+1,279,863 xp</h3>
+            </div>
+            <div class="skills_table-cell" id="fishing">
+              <div class="skill_pic_name">
+                <div class="skill_picture">
+                  <img src="/images/skills/fishing.png" style="margin: auto;">
+                </div>
+                <h2 class="skill_name">Fishing</h2>
+              </div>
+              <h3 class="skill_xp" id="fishing_gained">+1,279,863 xp</h3>
+            </div>
+            <div class="skills_table-cell" id="mining">
+              <div class="skill_pic_name">
+                <div class="skill_picture">
+                  <img src="/images/skills/mining.png" style="margin: auto;">
+                </div>
+                <h2 class="skill_name">Mining</h2>
+              </div>
+              <h3 class="skill_xp" id="mining_gained">+1,279,863 xp</h3>
+            </div>
+            <div class="skills_table-cell" id="slayer">
+              <div class="skill_pic_name">
+                <div class="skill_picture">
+                  <img src="/images/skills/slayer.png" style="margin: auto;">
+                </div>
+                <h2 class="skill_name">Slayer</h2>
+              </div>
+              <h3 class="skill_xp" id="slayer_gained">+1,279,863 xp</h3>
+            </div>
+            <div class="skills_table-cell" id="construction">
+              <div class="skill_pic_name">
+                <div class="skill_picture">
+                  <img src="/images/skills/construction.png" style="margin: auto;">
+                </div>
+                <h2 class="skill_name">Construction</h2>
+              </div>
+              <h3 class="skill_xp" id="construction_gained">+1,279,863 xp</h3>
+            </div>
+
+            <div class="skills_table-cell" id="hitpoints">
+              <div class="skill_pic_name">
+                <div class="skill_picture">
+                  <img src="/images/skills/hitpoints.png" style="margin: auto;">
+                </div>
+                <h2 class="skill_name">Hitpoints</h2>
+              </div>
+              <h3 class="skill_xp" id="hitpoints_gained">+1,279,863 xp</h3>
+            </div>
+            <div class="skills_table-cell" id="cooking">
+              <div class="skill_pic_name">
+                <div class="skill_picture">
+                  <img src="/images/skills/cooking.png" style="margin: auto;">
+                </div>
+                <h2 class="skill_name">Cooking</h2>
+              </div>
+              <h3 class="skill_xp" id="cooking_gained">+1,279,863 xp</h3>
+            </div>
+            <div class="skills_table-cell" id="firemaking">
+              <div class="skill_pic_name">
+                <div class="skill_picture">
+                  <img src="/images/skills/firemaking.png" style="margin: auto;">
+                </div>
+                <h2 class="skill_name">Firemaking</h2>
+              </div>
+              <h3 class="skill_xp" id="firemaking_gained">+1,279,863 xp</h3>
+            </div>
+            <div class="skills_table-cell" id="herblore">
+              <div class="skill_pic_name">
+                <div class="skill_picture">
+                  <img src="/images/skills/herblore.png" style="margin: auto;">
+                </div>
+                <h2 class="skill_name">Herblore</h2>
+              </div>
+              <h3 class="skill_xp" id="herblore_gained">+1,279,863 xp</h3>
+            </div>
+            <div class="skills_table-cell" id="farming">
+              <div class="skill_pic_name">
+                <div class="skill_picture">
+                  <img src="/images/skills/farming.png" style="margin: auto;">
+                </div>
+                <h2 class="skill_name">Farming</h2>
+              </div>
+              <h3 class="skill_xp" id="farming_gained">+1,279,863 xp</h3>
+            </div>
+            <div class="skills_table-cell" id="empty" style="visibility: hidden;"></div>
+          </div>
+        </div>
       </div>
     </div>
 
