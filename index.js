@@ -22,10 +22,8 @@ app.get('/skills', (req, res) => {
 
 app.get('/data', (req, res) => {
   if(req.query.player != null){
-    console.log(req.query.player);
-    skills.getUserSkills(req.query.player);
-    skills.updateUserSkills(req.query.player);
-
+    var q = "SELECT id FROM players WHERE username='" + req.query.player +"'";
+    skills.getQuery(q, req.query.player);
   }
   else{
     console.log("player field is null");
@@ -39,8 +37,7 @@ app.get('/skills/username=:username', (req, res) => {
   const u = skills.getSkillsByName(req.params.username);
   if(u !== undefined){
     u.then(function(result) {
-      console.log(result);
-      res.json(result);
+      res.json(result[0]);
    })
   }
   else{

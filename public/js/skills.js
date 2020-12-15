@@ -4,65 +4,46 @@ function searchUsername() {
     var userPage = document.getElementById('userpage');
 
     input = document.getElementById('search_bar').value.toLowerCase();
-
+    /*
     if (mainPage.style.visibility == "visible" && userPage.style.visibility == "hidden"){
         mainPage.style.visibility = "hidden";
-        userPage.style.visibility = "visible";
-    }
+        //userPage.style.visibility = "visible";
+    }*/
     handleGains(input);
 
-}
-
-function handleSkills(input) {
-    axios.get('http://localhost:7373/skills/username='+ input)
-        .then(function (response) {
-            var obj = response.data.xp;
-            var username = response.data.username;
-            var obj2 = response.data.level;
-            var levels = [];
-            var values = [];
-            var names = [];
-
-            names = Object.getOwnPropertyNames(obj);
-            for(var i in obj){
-                values.push(obj[i]);
-            }
-            for(var x in obj2){
-                levels.push(obj2[x]);
-            }
-
-            displayData(username, levels, names, values);
-        })
-        .catch(function (error) {
-            status = error.response.status;
-            if(status == 404){
-                var tableHeading = document.getElementById("table_heading");
-                var table = document.getElementById("skilltable");
-                table.style.visibility = "hidden";
-                tableHeading.style.visibility = "visible";
-                tableHeading.innerText = "Username '" + input + "' not found";
-            }
-        });
 }
 
 function handleGains(input) {
     axios.get('http://localhost:7373/skills/username='+ input)
         .then(function (response) {
-            var obj = response.data.gained_xp;
+            var obj = response.data;
             var username = response.data.username;
-            var gains = [];
             var names = [];
-            
-            console.log(obj);
-            names = Object.getOwnPropertyNames(obj);
+            var data = [];
+            var levelnames = [];
+            var levels = [];
+            var xpnames = [];
+            var xp = [];
+
             for(var i in obj){
-                gains.push(obj[i]);
+                data.push(obj[i]);
             }
-            console.log(gains);
-            displayData(username, gains, names);
+            names = Object.getOwnPropertyNames(obj);
+
+            for(var i=2;i<49;i=i+2){
+                levelnames.push(names[i]);
+                levels.push(data[i]);
+            }
+            for(var i=3;i<50;i=i+2){
+                xpnames.push(names[i]);
+                xp.push(data[i]);
+            }
+
+            displayData(username, levelnames, levels, xpnames, xp, data[50]);
             
         })
         .catch(function (error) {
+            console.log(error);
             status = error.response.status;
             if(status == 404){
                 var tableHeading = document.getElementById("table_heading");
@@ -74,7 +55,8 @@ function handleGains(input) {
         });
 }
 
-function displayData(username, level_val, names, xp_val){
+function displayData(username, levelnames, levels, xpnames, xp, gained){
+    var userPage = document.getElementById('userpage');
     var user_heading = document.getElementById("userheading");
     var exp_indicator = document.getElementById("expindicator");
     var table_heading_overall = document.getElementById("tableheadingoverall");
@@ -88,7 +70,7 @@ function displayData(username, level_val, names, xp_val){
     var lvl;
     var xp_remaining;
 
-    lg = calcLevel(level_val[0]);
+    lg = calcLevel(gained);
     lvl = lg[0];
     xp_goal = lg[1];
 
@@ -102,10 +84,10 @@ function displayData(username, level_val, names, xp_val){
         lvl_name.innerText = "Beer level " + lvl;
     }
     else{
-        xp_remaining = numberWithCommas(xp_goal - parseInt(level_val[0]));
+        xp_remaining = numberWithCommas(xp_goal - parseInt(gained));
         exp_indicator.innerText = xp_remaining + " xp remaining until next level";
         progress_bar.max = xp_goal;
-        progress_bar.value = level_val[0];
+        progress_bar.value = gained;
         lvl_show.innerText = lvl;
         lvl_current.innerText = lvl;
         lvl_next.innerText = lvl + 1;
@@ -115,58 +97,60 @@ function displayData(username, level_val, names, xp_val){
 
     user_heading.innerText = username;
 
-    table_heading_overall.innerText = "Overall gained XP: " + numberWithCommas(level_val[0]);
-    for(var i in names){
-        switch(names[i]){
-            case "attack":
-                document.getElementById("attack_gained").innerText = numberWithCommas("+" + level_val[i]) + " xp";
-            case "defence":
-                document.getElementById("defence_gained").innerText = numberWithCommas("+" + level_val[i]) + " xp";
-            case "strength":
-                document.getElementById("strength_gained").innerText = numberWithCommas("+" + level_val[i]) + " xp";
-            case "hitpoints":
-                document.getElementById("hitpoints_gained").innerText = numberWithCommas("+" + level_val[i]) + " xp";
-            case "ranged":
-                document.getElementById("ranged_gained").innerText = numberWithCommas("+" + level_val[i]) + " xp";
-            case "prayer":
-                document.getElementById("prayer_gained").innerText = numberWithCommas("+" + level_val[i]) + " xp";
-            case "magic":
-                document.getElementById("magic_gained").innerText = numberWithCommas("+" + level_val[i]) + " xp";
-            case "cooking":
-                document.getElementById("cooking_gained").innerText = numberWithCommas("+" + level_val[i]) + " xp";
-            case "woodcutting":
-                document.getElementById("woodcutting_gained").innerText = numberWithCommas("+" + level_val[i]) + " xp";
-            case "fletching":
-                document.getElementById("fletching_gained").innerText = numberWithCommas("+" + level_val[i]) + " xp";
-            case "fishing":
-                document.getElementById("fishing_gained").innerText = numberWithCommas("+" + level_val[i]) + " xp";
-            case "firemaking":
-                document.getElementById("firemaking_gained").innerText = numberWithCommas("+" + level_val[i]) + " xp";
-            case "crafing":
-                document.getElementById("crafting_gained").innerText = numberWithCommas("+" + level_val[i]) + " xp";
-            case "smithing":
-                document.getElementById("smithing_gained").innerText = numberWithCommas("+" + level_val[i]) + " xp";
-            case "mining":
-                document.getElementById("mining_gained").innerText = numberWithCommas("+" + level_val[i]) + " xp";
-            case "herblore":
-                document.getElementById("herblore_gained").innerText = numberWithCommas("+" + level_val[i]) + " xp";
-            case "agility":
-                document.getElementById("agility_gained").innerText = numberWithCommas("+" + level_val[i]) + " xp";
-            case "thieving":
-                document.getElementById("thieving_gained").innerText = numberWithCommas("+" + level_val[i]) + " xp";
-            case "slayer":
-                document.getElementById("slayer_gained").innerText = numberWithCommas("+" + level_val[i]) + " xp";
-            case "farming":
-                document.getElementById("farming_gained").innerText = numberWithCommas("+" + level_val[i]) + " xp";
-            case "runecraft":
-                document.getElementById("runecraft_gained").innerText = numberWithCommas("+" + level_val[i]) + " xp";
-            case "hunter":
-                document.getElementById("hunter_gained").innerText = numberWithCommas("+" + level_val[i]) + " xp";
-            case "construction":
-                document.getElementById("construction_gained").innerText = numberWithCommas("+" + level_val[i]) + " xp";
+    table_heading_overall.innerText = "Overall gained XP: " + numberWithCommas(gained);
+    for(var i in levelnames){
+        switch(levelnames[i]){
+            case "overallLevel":
+                document.getElementById("overall_gained").innerText = numberWithCommas(xp[i]) + "XP" + " / " + levels[i];
+            case "attackLevel":
+                document.getElementById("attack_gained").innerText = numberWithCommas(xp[i]) + "XP" + " / " + levels[i];
+            case "defenceLevel":
+                document.getElementById("defence_gained").innerText = numberWithCommas(xp[i]) + "XP" + " / " + levels[i];
+            case "strengthLevel":
+                document.getElementById("strength_gained").innerText = numberWithCommas(xp[i]) + "XP" + " / " + levels[i];
+            case "hitpointsLevel":
+                document.getElementById("hitpoints_gained").innerText = numberWithCommas(xp[i]) + "XP" + " / " + levels[i];
+            case "rangedLevel":
+                document.getElementById("ranged_gained").innerText = numberWithCommas(xp[i]) + "XP" + " / " + levels[i];
+            case "prayerLevel":
+                document.getElementById("prayer_gained").innerText = numberWithCommas(xp[i]) + "XP" + " / " + levels[i];
+            case "magicLevel":
+                document.getElementById("magic_gained").innerText = numberWithCommas(xp[i]) + "XP" + " / " + levels[i];
+            case "cookingLevel":
+                document.getElementById("cooking_gained").innerText = numberWithCommas(xp[i]) + "XP" + " / " + levels[i];
+            case "woodcuttingLevel":
+                document.getElementById("woodcutting_gained").innerText = numberWithCommas(xp[i]) + "XP" + " / " + levels[i];
+            case "fletchingLevel":
+                document.getElementById("fletching_gained").innerText = numberWithCommas(xp[i]) + "XP" + " / " + levels[i];
+            case "fishingLevel":
+                document.getElementById("fishing_gained").innerText = numberWithCommas(xp[i]) + "XP" + " / " + levels[i];
+            case "firemakingLevel":
+                document.getElementById("firemaking_gained").innerText = numberWithCommas(xp[i]) + "XP" + " / " + levels[i];
+            case "crafingLevel":
+                document.getElementById("crafting_gained").innerText = numberWithCommas(xp[i]) + "XP" + " / " + levels[i];
+            case "smithingLevel":
+                document.getElementById("smithing_gained").innerText = numberWithCommas(xp[i]) + "XP" + " / " + levels[i];
+            case "miningLevel":
+                document.getElementById("mining_gained").innerText = numberWithCommas(xp[i]) + "XP" + " / " + levels[i];
+            case "herbloreLevel":
+                document.getElementById("herblore_gained").innerText = numberWithCommas(xp[i]) + "XP" + " / " + levels[i];
+            case "agilityLevel":
+                document.getElementById("agility_gained").innerText = numberWithCommas(xp[i]) + "XP" + " / " + levels[i];
+            case "thievingLevel":
+                document.getElementById("thieving_gained").innerText = numberWithCommas(xp[i]) + "XP" + " / " + levels[i];
+            case "slayerLevel":
+                document.getElementById("slayer_gained").innerText = numberWithCommas(xp[i]) + "XP" + " / " + levels[i];
+            case "farmingLevel":
+                document.getElementById("farming_gained").innerText = numberWithCommas(xp[i]) + "XP" + " / " + levels[i];
+            case "runecraftLevel":
+                document.getElementById("runecraft_gained").innerText = numberWithCommas(xp[i]) + "XP" + " / " + levels[i];
+            case "hunterLevel":
+                document.getElementById("hunter_gained").innerText = numberWithCommas(xp[i]) + "XP" + " / " + levels[i];
+            case "constructionLevel":
+                document.getElementById("construction_gained").innerText = numberWithCommas(xp[i]) + "XP" + " / " + levels[i];
         }
     }
-    
+    userPage.style.visibility = "visible";
 }
 
 function calcLevel(xp){
@@ -206,11 +190,11 @@ function calcLevel(xp){
     }
     else if(xp >= 737627 && xp < 1986068){
         level = 8;
-        goal = 737627;
+        goal = 1986068;
     }
     else if(xp >= 1986068 && xp < 5346332){
         level = 9;
-        goal = 737627;
+        goal = 5346332;
     }
     else if(xp >= 5346332){
         level = 10;

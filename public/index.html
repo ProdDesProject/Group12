@@ -1,17 +1,17 @@
 <!doctype html>
 <html>
   <head>
-    <title>Old School Runescape Tracker</title>
+    <title>Old School Runescape Beer Level Tracker</title>
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
     <div class="main">
-      <h1>Old School Runescape Tracker</h1>
+      <h1>Beer Level Tracker</h1>
       <div class="search_username" >
         <input id="search_bar" type="text" placeholder="Search by username.."></input>
         <button id="search_button" onclick="searchUsername()">Search</button>
       </div>
-      <div class="landing_page" id="landingpage" style="visibility: visible;">
+      <div class="landing_page" id="landingpage">
         <h1>Testing testing 123</h1>
       </div>
       <div class="user_page" id="userpage" style="visibility: hidden;">
@@ -251,7 +251,15 @@
               </div>
               <h3 class="skill_xp" id="farming_gained">+1,279,863 xp</h3>
             </div>
-            <div class="skills_table-cell" id="empty" style="visibility: hidden;"></div>
+            <div class="skills_table-cell" id="overall">
+              <div class="skill_pic_name">
+                <div class="skill_picture">
+                  <img src="/images/skills/overall.png" style="margin: auto;">
+                </div>
+                <h2 class="skill_name">Overall</h2>
+              </div>
+              <h3 class="skill_xp" id="overall_gained">+1,279,863 xp</h3>
+            </div>
           </div>
         </div>
       </div>
