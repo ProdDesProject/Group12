@@ -1,133 +1,83 @@
-const { v4: uuidv4 } = require('uuid');
-
-let gains = [
-  {
-    id : "1",
-    username : "testi ukko",
-    gained_xp : {
-      overall : '351141',
-      attack : '15267',
-      defence : '15267',
-      strength : '15267',
-      hitpoints : '15267',
-      ranged : '15267',
-      prayer : '15267',
-      magic : '15267',
-      cooking : '15267',
-      woodcutting : '15267',
-      fletching : '15267',
-      fishing : '15267',
-      firemaking : '15267',
-      crafting : '15267',
-      smithing : '15267',
-      mining : '15267',
-      herblore : '15267',
-      agility : '15267',
-      thieving : '15267',
-      slayer : '15267',
-      farming : '15267',
-      runecraft : '15267',
-      hunter : '15267',
-      construction : '15267'
-    }
-  }
-]
-
-let skills = [
-  {
-    id : "1",
-    username : "testi ukko",
-    xp : {
-      overall : '40245234',
-      attack : '2130300',
-      defence : '2130300',
-      strength : '2130300',
-      hitpoints : '2130300',
-      ranged : '2130300',
-      prayer : '2130300',
-      magic : '2130300',
-      cooking : '2130300',
-      woodcutting : '2130300',
-      fletching : '2130300',
-      fishing : '2130300',
-      firemaking : '2130300',
-      crafting : '2130300',
-      smithing : '2130300',
-      mining : '2130300',
-      herblore : '2130300',
-      agility : '2130300',
-      thieving : '2130300',
-      slayer : '2130300',
-      farming : '2130300',
-      runecraft : '2130300',
-      hunter : '2130300',
-      construction : '2130300'
-    },
-    level : {
-      overall : '1840',
-      attack : '80',
-      defence : '80',
-      strength : '80',
-      hitpoints : '80',
-      ranged : '80',
-      prayer : '80',
-      magic : '80',
-      cooking : '80',
-      woodcutting : '80',
-      fletching : '80',
-      fishing : '80',
-      firemaking : '80',
-      crafting : '80',
-      smithing : '80',
-      mining : '80',
-      herblore : '80',
-      agility : '80',
-      thieving : '80',
-      slayer : '80',
-      farming : '80',
-      runecraft : '80',
-      hunter : '80',
-      construction : '80'
-    }
-  }
-]
+const hiscores = require('osrs-json-hiscores');
+const db = require('../db');
 
 module.exports = {
-  createGains: (username) => {
-    gains.push({
-      id : uuidv4(),
-      username,
-      gained_xp : null
-    });
-  },
-  getGainedXpById: (id) => gains.find(u => u.id == id),
-  getGainedXpByName: (username) => gains.find(u => u.username == username),
-  editGains: (username, gained_xp) => {
-    const result = gains.find(t =>t.username == username)
-
-    if(result !== undefined)
-    {
-      result.gained_xp = gained_xp;
-    }
-  },
-  createSkills: (username, xp, level) => {
-    skills.push({
-      id: uuidv4,
-      username,
-      xp,
-      level
-    });
-  },
   getAllSkills: () => skills,
   getSkillsById: (id) => skills.find(u => u.id == id),
-  getSkillsByName: (username) => skills.find(u => u.username == username),
-  editSkills: (username, xp, level) => {
-    const result = skills.find(t =>t.username == username)
-
-    if(result !== undefined)
-    {
-      result.xp = xp
-      result.level = level
+  getSkillsByName: (username) => {
+    var q = "select * from players where username = '"+ username +"'";
+    const result = db.query(q);
+    console.log(result);
+    if (result !== undefined){
+      return result;
     }
+  },
+  getUserSkills: (username, id) => {
+
+    var levels = [];
+    var names = [];
+    
+    hiscores.getStats(username, 'full')
+    .then(res => {
+      var obj = res.main.skills;
+      var quer = "update players set "
+      names = Object.getOwnPropertyNames(obj);
+      for(var i in obj){
+        levels.push(obj[i]);
+      }
+      var userquer = "INSERT INTO players (username) VALUES ('"+ username +"')";
+      console.log(userquer);
+      db.query(userquer);
+      
+      for(var x in names){
+        var querpart = names[x] + "Level = " + levels[x].level + ", " + names[x] + "XP = " + levels[x].xp +", ";
+        quer = quer + querpart;
+      }
+      quer = quer.substring(0, quer.length - 2) + " WHERE username='" + username +"'"
+      console.log("query:" + quer);
+      db.query(quer);
+    })
+    .catch(err => console.log(err))
+  },
+  updateUserSkills: (username) => {
+    var q1 = "select overallXP, overallGained from players where username = '"+ username +"'";
+    var q2;
+    var g;
+    var obj = db.query(q1);
+    var old_g;
+    var gained;
+    
+    obj.then(function(result) {
+      console.log(result[0].overallXP);
+      old_g = result[0].overallXP;
+      console.log(result[0].overallGained);
+      gained = result[0].overallGained;
+    })
+    console.log(old_g);
+    if(old_g !== undefined){
+      hiscores.getStats(username, 'full')
+      .then(res => {
+        g = res.main.skills.overall.xp;
+        console.log(g);
+
+        if(gained !== null || gained !== NaN){
+          gained = (g - old_g) + gained;
+          console.log(gained);
+        }
+        else if(gained == null || gained !== NaN){
+          gained = g - old_g;
+          console.log(gained);
+        }
+        q2 = "update players set overallGained = " + gained + " WHERE username = '"+ username +"'";
+        db.query(q2);
+      })
+    }
+  },
+  lookUpPlayer: (username) => {
+    var q = "SELECT id FROM players WHERE username='" + username +"'";
+    var res = db.query(q);
+    res.then(function(result) {
+      return result;
+    })
   }
 }

@@ -46,17 +46,19 @@ function handleSkills(input) {
 }
 
 function handleGains(input) {
-    axios.get('http://localhost:7373/gains/username='+ input)
+    axios.get('http://localhost:7373/skills/username='+ input)
         .then(function (response) {
             var obj = response.data.gained_xp;
             var username = response.data.username;
             var gains = [];
             var names = [];
-
+            
+            console.log(obj);
             names = Object.getOwnPropertyNames(obj);
             for(var i in obj){
                 gains.push(obj[i]);
             }
+            console.log(gains);
             displayData(username, gains, names);
             
         })
@@ -80,6 +82,7 @@ function displayData(username, level_val, names, xp_val){
     var lvl_current = document.getElementById("levelcurrent");
     var lvl_next = document.getElementById("levelnext");
     var lvl_show = document.getElementById("lvl_show");
+    var lvl_name = document.getElementById("lvl_name");
     var lg = [];
     var xp_goal;
     var lvl;
@@ -96,6 +99,7 @@ function displayData(username, level_val, names, xp_val){
         lvl_show.innerText = lvl;
         lvl_current.innerText = lvl-1;
         lvl_next.innerText = lvl;
+        lvl_name.innerText = "Beer level " + lvl;
     }
     else{
         xp_remaining = numberWithCommas(xp_goal - parseInt(level_val[0]));
@@ -105,6 +109,7 @@ function displayData(username, level_val, names, xp_val){
         lvl_show.innerText = lvl;
         lvl_current.innerText = lvl;
         lvl_next.innerText = lvl + 1;
+        lvl_name.innerText = "Beer level " + lvl;
     }
     
 
