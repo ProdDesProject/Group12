@@ -1,0 +1,307 @@
+*{
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'runescape_bold';
+    src: url('../fonts/runescape_bold.woff2') format('woff2'),
+        url('../fonts/runescape_bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'runescape';
+    src: url('../fonts/runescape.woff2') format('woff2'),
+        url('../fonts/runescape.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+h1 {
+    font-family: 'runescape_bold';
+    color: black;
+}
+h2 {
+    font-family: 'runescape';
+    color: black;
+}
+h3 {
+    font-family: 'runescape';
+    color: black;
+}
+body {
+    height: 100%;
+    background-image: url('/images/bg_2.jpg');
+    background-color: black;
+    background-position: center;
+}
+
+.main {
+    top: 0;
+    bottom: 0;
+    width: 1350px;
+    left: 50%;
+    right: 50%;
+    position: fixed;
+    margin-left: -675px;
+    background-image: url('/images/bg_3.png');
+    background-position: center;
+    background-repeat: repeat-y;
+    text-align: center;
+}
+
+.search_username {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 50px;
+    width: 80%;
+}
+.search_username input[type=text] {
+    height: 30px;
+    float: left;
+    border: 1px solid grey;
+    font-size: 25px;
+    font-family: runescape;
+    width: 90%
+}
+
+.search_username button {
+    height: 30px;
+    float: left;
+    width: 10%;
+    font-size: 25px;
+    cursor: pointer;
+    font-family: runescape_bold;
+}
+
+.user_page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.landing_page {
+    position: absolute;
+    visibility: hidden;
+    width: 100%;
+    height: 50%;
+    background-color: rgba(90, 82, 69, 0.25);
+}
+
+.user_level {
+    margin-top: 50px;
+    font-family: runescape;
+    background-image: url('/images/bg_progress.png');
+    display: inline-block;
+    width: 80%;
+}
+
+.level_div {
+    float: left;
+    background-image: url('/images/bg_lvl.png');
+    width: 228px;
+    height: 189px;
+}
+
+.level_row1 {
+    width: 100%;
+    height: 60%;
+    display: inline-block;
+}
+.level_picture {
+
+    float: left;
+    margin-left: 19px;
+    margin-top: 20px;
+}
+
+.level_h1 {
+    width: 95px;
+    float: right;
+    letter-spacing: -5px;
+    font-family: runescape_bold;
+    color: yellow;
+    font-size: 90px;
+    text-align: center;
+    margin-top: 20px;
+    margin-right: 19px;
+}
+
+.level_h2 {
+    height: 40%;
+    line-height: 75px;
+    color: white;
+    text-align: center;
+    margin-top: 0px;
+}
+
+.level_heading_progress {
+    position: relative;
+    float: left;
+    width: 842px;
+    margin-left: 10px;
+    height: 189px;
+}
+
+.user_heading {
+    position: absolute;
+    font-size: 80px;
+    height: 94px;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    bottom: 95px;
+    line-height: 94px;
+    text-align: center;
+    margin-top: 0px;
+}
+
+.level_progress {
+    position: absolute;
+    display: inline-block;
+    height: 94px;
+    width: 100%;
+    left: 0px;
+    bottom: 0px;
+}
+
+.level_current {
+    color: black;
+    width: 15%;
+    height: 100%;
+    margin-top: 0px;
+    float: left;
+    line-height: 94px;
+    font-size: 50px;
+}
+
+.level_progress_upper_lower {
+    position: relative;
+    width: 70%;
+    height: 100%;
+    margin-top: 0px;
+    float: left;
+}
+.progress_bar {
+    position: absolute;
+    margin-top: 15px;
+    height: 30%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+    background-color: black;
+}
+.progress_bar::-webkit-progress-bar {
+    border: 3px solid black;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+    background-color: black;
+}
+.progress_bar::-webkit-progress-value {
+    
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+    background-color: green;
+}
+.progress_bar::-moz-progress-bar {
+    border: 3px solid black;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+    background-color: black;
+}  
+
+.exp_indicator {
+    position: absolute;
+    color: black;
+    height: 40%;
+    width: 100%;
+    bottom: 0px;
+    left: 0px;
+    top: 37px;
+    line-height: 27px;
+    text-align: center;
+}
+
+.level_next {
+    color: black;
+    width: 15%;
+    height: 100%;
+    margin-top: 0px;
+    float: left;
+    line-height: 94px;
+    font-size: 50px;
+
+}
+
+.skills_heading_table {
+    position: relative;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 50px;
+    background-image: url("/images/bg_table.png");
+    height: 425px;
+}
+
+.table_heading_overall {
+    position: absolute;
+    font-size: 50px;
+    line-height: 78px;
+    text-align: center;
+    width: 100%;
+    height: 100px;
+    margin-top: 0px;
+}
+
+.skills_table {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 115px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 0;
+    height: 300px;
+}
+
+.skills_table-cell {
+    box-sizing: border-box;
+    flex-grow: 1;
+    overflow: hidden;
+    list-style: none;
+    width: 16.6%;
+    height: 25%;
+    border: solid 1px rgba(90, 82, 69);
+}
+
+.skill_pic_name {
+    height: 55%;
+    width: 100%;
+    display: inline-block;
+}
+
+.skill_picture {
+    height: 100%;
+    width: 23%;
+    float: left;
+    display: flex;
+    justify-content: center;
+    border: solid 1px rgba(90, 82, 69, 0.5);
+}
+
+.skill_name {
+    float: left;
+    height: 100%;
+    width: 77%;
+    line-height: 40px;
+    margin-top: 0px;
+    border: solid 1px rgba(90, 82, 69, 0.5);
+}
+
+.skill_xp {
+    margin-top: -4px;
+    height: 45%;
+    line-height: 33px;
+    border: solid 1px rgba(90, 82, 69, 0.5);
+}
