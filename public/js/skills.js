@@ -14,7 +14,7 @@ function searchUsername() {
 }
 
 function handleGains(input) {
-    axios.get('http://localhost:7373/skills/username='+ input)
+    axios.get('http://50.19.42.25/:7373/skills/username='+ input)
         .then(function (response) {
             var obj = response.data;
             var username = response.data.username;
